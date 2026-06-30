@@ -1,0 +1,58 @@
+#include "target_app.h"
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_RPM_TO_ENCODER_RPM       268.0f
+#define MAX_RPM_TO_ENCODER_TARGET    35.0f
+
+static int Target_App_RpmToEncoderTarget(float rpm)
+{
+	float encoder_target;
+
+	encoder_target = rpm * (MAX_RPM_TO_ENCODER_TARGET / MAX_RPM_TO_ENCODER_RPM);
+
+	if(encoder_target > MAX_RPM_TO_ENCODER_TARGET)
+	{
+		encoder_target = MAX_RPM_TO_ENCODER_TARGET;
+	}
+	else if(encoder_target < -MAX_RPM_TO_ENCODER_TARGET)
+	{
+		encoder_target = -MAX_RPM_TO_ENCODER_TARGET;
+	}
+
+	if(encoder_target >= 0)
+	{
+		return (int)(encoder_target + 0.5f);
+	}
+
+	return (int)(encoder_target - 0.5f);
+}
+
+void Target_App_ProcessDebugCommand(char *cmd_buffer)
+{
+	char *tc_ptr;
+	char *td_ptr;
+	float target_rpm;
+
+	tc_ptr = strstr(cmd_buffer,"TC:");
+	if(tc_ptr)
+	{
+		target_rpm = (float)atof(tc_ptr + 3);
+		Target_EncoderC = Target_App_RpmToEncoderTarget(target_rpm);
+		printf("Set Target_EncoderC=%d from TC:%.2f rpm, Current_EncoderC=%d\r\n", Target_EncoderC, target_rpm, Current_EncoderC);
+	}
+
+	td_ptr = strstr(cmd_buffer,"TD:");
+	if(td_ptr)
+	{
+		target_rpm = (float)atof(td_ptr + 3);
+		Target_EncoderD = Target_App_RpmToEncoderTarget(target_rpm);
+		printf("Set Target_EncoderD=%d from TD:%.2f rpm, Current_EncoderD=%d\r\n", Target_EncoderD, target_rpm, Current_EncoderD);
+	}
+}
+
+void Target_App_ProcessFrame(u8 *receive_data)
+{
+	Target_EncoderC = (short)Target_Speed_transition(receive_data[5],receive_data[6]);
+	Target_EncoderD = (short)Target_Speed_transition(receive_data[7],receive_data[8]);
+}

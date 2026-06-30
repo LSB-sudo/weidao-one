@@ -1,0 +1,3 @@
+{"file":".trellis/spec/backend/index.md","reason":"General project implementation and quality guidance for this code change."}
+{"file":".trellis/spec/guides/cross-layer-thinking-guide.md","reason":"The IMU fix spans startup flow, app calibration, and hardware-facing fusion code."}
+{"file":".trellis/tasks/05-25-imu-drift-fix/prd.md","reason":"Implementation must follow the scoped IMU drift requirements and acceptance criteria."}

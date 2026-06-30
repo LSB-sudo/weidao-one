@@ -1,0 +1,22 @@
+R_DEF: Internal format may change without notice
+local
+id btnCtrlDisconnect
+id btnCtrlScan
+id btnDisconnect
+id btnEmergencyStop
+id btnScan
+id btnSend
+id etSend
+id joystick
+id scrollCtrlLog
+id scrollLog
+id tvAck
+id tvBattery
+id tvCtrlLog
+id tvCtrlStatus
+id tvLeftRpm
+id tvLog
+id tvRightRpm
+id tvStatus
+layout activity_control
+layout activity_main

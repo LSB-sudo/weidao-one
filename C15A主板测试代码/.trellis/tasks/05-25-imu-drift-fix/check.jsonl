@@ -1,0 +1,4 @@
+{"file":".trellis/spec/backend/index.md","reason":"Check agent needs the project's general quality expectations."}
+{"file":".trellis/spec/backend/quality-guidelines.md","reason":"Verification should follow the available quality guidance."}
+{"file":".trellis/spec/guides/cross-layer-thinking-guide.md","reason":"Validation should confirm the IMU fix remains consistent across startup, fusion, and display layers."}
+{"file":".trellis/tasks/05-25-imu-drift-fix/prd.md","reason":"Check the implementation against the IMU drift acceptance criteria."}

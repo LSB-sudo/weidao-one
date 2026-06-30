@@ -1,0 +1,8 @@
+{
+  "id": "06-18-webrtc-static-viewer-niagara",
+  "title": "WebRTC static viewer and Niagara embedding support",
+  "status": "done",
+  "date": "2026-06-18",
+  "summary": "Added a board-served static viewer page, enabled CORS for external embedding, and produced a standalone HTML page for Niagara-style embedding.",
+  "workspace": "/root/rdk_notic"
+}

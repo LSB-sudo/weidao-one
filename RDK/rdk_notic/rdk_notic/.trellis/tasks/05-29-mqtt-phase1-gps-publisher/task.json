@@ -1,0 +1,29 @@
+{
+  "id": "mqtt-phase1-gps-publisher",
+  "name": "mqtt-phase1-gps-publisher",
+  "title": "mqtt phase1 gps publisher",
+  "description": "",
+  "status": "in_progress",
+  "dev_type": null,
+  "scope": null,
+  "package": null,
+  "priority": "P2",
+  "creator": "LSB",
+  "assignee": "LSB",
+  "createdAt": "2026-05-29",
+  "completedAt": null,
+  "branch": null,
+  "base_branch": "master",
+  "worktree_path": null,
+  "commit": null,
+  "pr_url": null,
+  "subtasks": [],
+  "children": [],
+  "parent": null,
+  "relatedFiles": [
+    "cmd/dfplayer-demo/main.go",
+    "mydocs/DFPLAYER_MP3_SERIAL_USAGE.md"
+  ],
+  "notes": "2026-06-02: Added standalone DFPlayer MP3 serial demo tool under cmd/dfplayer-demo for 9600 8N1 playback verification (reset -> volume 20 -> play 0001/0002/0003 -> stop). Documented usage in mydocs/DFPLAYER_MP3_SERIAL_USAGE.md. This is exploratory side work and is not yet integrated into the main rdk-webrtc service.",
+  "meta": {}
+}

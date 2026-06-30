@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#1a1a2e">
+
+    <!-- 顶部：标题 + 状态 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="电机控制"
+        android:textSize="20sp"
+        android:textColor="#a0c4ff"
+        android:gravity="center"
+        android:paddingBottom="8dp" />
+
+    <!-- 状态行：连接指示 + 扫描 / 断开 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/tvCtrlStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="● 未连接"
+            android:textColor="#888888"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnCtrlScan"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="扫描"
+            android:textSize="13sp"
+            android:backgroundTint="#1a5a3a"
+            android:textColor="#66ffaa"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btnCtrlDisconnect"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="断开"
+            android:textSize="13sp"
+            android:backgroundTint="#5a1a1a"
+            android:textColor="#ffaaaa" />
+    </LinearLayout>
+
+    <!-- 电池电压 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔋 电池："
+            android:textColor="#aaaaaa"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvBattery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--V"
+            android:textColor="#ffcc00"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- 固件应答状态 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="    应答："
+            android:textColor="#aaaaaa"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvAck"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="--"
+            android:textColor="#888888"
+            android:textSize="13sp"
+            android:singleLine="true"
+            android:ellipsize="end" />
+    </LinearLayout>
+
+    <!-- 摇杆区域 -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <com.example.bleapp.JoystickView
+            android:id="@+id/joystick"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+    <!-- RPM 实时数值 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="L:"
+            android:textColor="#aaaaaa"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvLeftRpm"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#44aaff"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  R:"
+            android:textColor="#aaaaaa"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvRightRpm"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#44aaff"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <!-- 紧急停止按钮 -->
+    <Button
+        android:id="@+id/btnEmergencyStop"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="⛔  紧急停止"
+        android:textSize="18sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:backgroundTint="#cc2222"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- 日志区 -->
+    <ScrollView
+        android:id="@+id/scrollCtrlLog"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="#0d0d1a"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tvCtrlLog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#cccccc"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            android:lineSpacingExtra="2dp" />
+    </ScrollView>
+
+</LinearLayout>

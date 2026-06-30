@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.example.bleapp-merged_res-20:/layout_activity_main.xml.flat",
+        "source": "com.example.bleapp-main-22:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.bleapp-merged_res-20:/layout_activity_control.xml.flat",
+        "source": "com.example.bleapp-main-22:/layout/activity_control.xml"
+    }
+]

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name='app_name'>RDK Camera Viewer</string>
+    <string name='viewer_url'>http://192.168.3.142:8080/viewer</string>
+    <string name='error_loading'>Unable to open %1$s. Confirm the phone and RDK board are on the same LAN and the board service is running.</string>
+</resources>

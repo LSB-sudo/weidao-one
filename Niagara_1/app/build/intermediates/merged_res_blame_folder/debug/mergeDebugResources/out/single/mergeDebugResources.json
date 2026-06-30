@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.example.bleapp-debug-23:/layout_activity_niagara_web.xml.flat",
+        "source": "com.example.bleapp-main-25:/layout/activity_niagara_web.xml"
+    },
+    {
+        "merged": "com.example.bleapp-debug-23:/layout_activity_control.xml.flat",
+        "source": "com.example.bleapp-main-25:/layout/activity_control.xml"
+    },
+    {
+        "merged": "com.example.bleapp-debug-23:/layout_activity_main.xml.flat",
+        "source": "com.example.bleapp-main-25:/layout/activity_main.xml"
+    }
+]

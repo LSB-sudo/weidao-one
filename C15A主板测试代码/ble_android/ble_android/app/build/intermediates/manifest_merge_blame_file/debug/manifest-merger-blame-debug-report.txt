@@ -1,0 +1,128 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.bleapp"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="34" />
+10
+11    <!-- Android 12+ (API 31+) -->
+12    <uses-permission
+12-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:6:5-9:31
+13        android:name="android.permission.BLUETOOTH_SCAN"
+13-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:7:9-57
+14        android:usesPermissionFlags="neverForLocation" />
+14-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:8:9-55
+15    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+15-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:10:5-76
+15-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:10:22-73
+16
+17    <!-- Android 11 及以下 -->
+18    <uses-permission android:name="android.permission.BLUETOOTH" />
+18-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:13:5-68
+18-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:13:22-65
+19    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+19-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:14:5-74
+19-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:14:22-71
+20    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+20-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:15:5-79
+20-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:15:22-76
+21
+22    <uses-feature
+22-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:17:5-19:35
+23        android:name="android.hardware.bluetooth_le"
+23-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:18:9-53
+24        android:required="true" />
+24-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:19:9-32
+25
+26    <permission
+26-->[androidx.core:core:1.10.1] C:\Users\chency\.gradle\caches\transforms-3\818cbb8ca43977519ad1482f776ee1c6\transformed\core-1.10.1\AndroidManifest.xml:22:5-24:47
+27        android:name="com.example.bleapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+27-->[androidx.core:core:1.10.1] C:\Users\chency\.gradle\caches\transforms-3\818cbb8ca43977519ad1482f776ee1c6\transformed\core-1.10.1\AndroidManifest.xml:23:9-81
+28        android:protectionLevel="signature" />
+28-->[androidx.core:core:1.10.1] C:\Users\chency\.gradle\caches\transforms-3\818cbb8ca43977519ad1482f776ee1c6\transformed\core-1.10.1\AndroidManifest.xml:24:9-44
+29
+30    <uses-permission android:name="com.example.bleapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+30-->[androidx.core:core:1.10.1] C:\Users\chency\.gradle\caches\transforms-3\818cbb8ca43977519ad1482f776ee1c6\transformed\core-1.10.1\AndroidManifest.xml:26:5-97
+30-->[androidx.core:core:1.10.1] C:\Users\chency\.gradle\caches\transforms-3\818cbb8ca43977519ad1482f776ee1c6\transformed\core-1.10.1\AndroidManifest.xml:26:22-94
+31
+32    <application
+32-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:21:5-47:19
+33        android:allowBackup="true"
+33-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:22:9-35
+34        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+34-->[androidx.core:core:1.10.1] C:\Users\chency\.gradle\caches\transforms-3\818cbb8ca43977519ad1482f776ee1c6\transformed\core-1.10.1\AndroidManifest.xml:28:18-86
+35        android:debuggable="true"
+36        android:extractNativeLibs="true"
+37        android:label="BLE 调试"
+37-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:23:9-31
+38        android:testOnly="true"
+39        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" >
+39-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:24:9-68
+40        <activity
+40-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:26:9-34:20
+41            android:name="com.example.bleapp.MainActivity"
+41-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:27:13-41
+42            android:exported="true"
+42-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:28:13-36
+43            android:screenOrientation="portrait" >
+43-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:29:13-49
+44            <intent-filter>
+44-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:30:13-33:29
+45                <action android:name="android.intent.action.MAIN" />
+45-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:31:17-69
+45-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:31:25-66
+46
+47                <category android:name="android.intent.category.LAUNCHER" />
+47-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:32:17-77
+47-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:32:27-74
+48            </intent-filter>
+49        </activity>
+50        <activity
+50-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:36:9-45:20
+51            android:name="com.example.bleapp.ControlActivity"
+51-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:37:13-44
+52            android:exported="true"
+52-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:38:13-36
+53            android:label="电机控制"
+53-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:39:13-33
+54            android:screenOrientation="portrait" >
+54-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:40:13-49
+55            <intent-filter>
+55-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:30:13-33:29
+56                <action android:name="android.intent.action.MAIN" />
+56-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:31:17-69
+56-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:31:25-66
+57
+58                <category android:name="android.intent.category.LAUNCHER" />
+58-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:32:17-77
+58-->C:\Users\chency\Desktop\卫稻者\ble_android\app\src\main\AndroidManifest.xml:32:27-74
+59            </intent-filter>
+60        </activity>
+61
+62        <provider
+62-->[androidx.emoji2:emoji2:1.2.0] C:\Users\chency\.gradle\caches\transforms-3\ebd7e8b0739ea5852a86f1ec4bdee03d\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+63            android:name="androidx.startup.InitializationProvider"
+63-->[androidx.emoji2:emoji2:1.2.0] C:\Users\chency\.gradle\caches\transforms-3\ebd7e8b0739ea5852a86f1ec4bdee03d\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+64            android:authorities="com.example.bleapp.androidx-startup"
+64-->[androidx.emoji2:emoji2:1.2.0] C:\Users\chency\.gradle\caches\transforms-3\ebd7e8b0739ea5852a86f1ec4bdee03d\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+65            android:exported="false" >
+65-->[androidx.emoji2:emoji2:1.2.0] C:\Users\chency\.gradle\caches\transforms-3\ebd7e8b0739ea5852a86f1ec4bdee03d\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+66            <meta-data
+66-->[androidx.emoji2:emoji2:1.2.0] C:\Users\chency\.gradle\caches\transforms-3\ebd7e8b0739ea5852a86f1ec4bdee03d\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+67                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+67-->[androidx.emoji2:emoji2:1.2.0] C:\Users\chency\.gradle\caches\transforms-3\ebd7e8b0739ea5852a86f1ec4bdee03d\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+68                android:value="androidx.startup" />
+68-->[androidx.emoji2:emoji2:1.2.0] C:\Users\chency\.gradle\caches\transforms-3\ebd7e8b0739ea5852a86f1ec4bdee03d\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+69            <meta-data
+69-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\chency\.gradle\caches\transforms-3\e31b4c49acd42e650810370e70a68f68\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+70                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+70-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\chency\.gradle\caches\transforms-3\e31b4c49acd42e650810370e70a68f68\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+71                android:value="androidx.startup" />
+71-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\chency\.gradle\caches\transforms-3\e31b4c49acd42e650810370e70a68f68\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+72        </provider>
+73    </application>
+74
+75</manifest>

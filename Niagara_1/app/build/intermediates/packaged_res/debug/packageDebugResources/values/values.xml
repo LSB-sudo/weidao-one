@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">BLE 调试</string>
+    <string name="error_loading">Unable to open %1$s. Confirm the phone and RDK board are on the same LAN and the board service is running.</string>
+    <string name="niagara_back">返回</string>
+    <string name="niagara_error_loading">无法打开 %1$s。请确认手机与 Niagara 主机在同一局域网，且站点可从局域网访问。</string>
+    <string name="niagara_open_button">打开 Niagara 站点</string>
+    <string name="niagara_refresh">刷新</string>
+    <string name="niagara_title">Niagara 站点</string>
+    <string name="niagara_url">http://192.168.3.119/</string>
+    <string name="viewer_url">http://192.168.3.142:8080/viewer</string>
+</resources>

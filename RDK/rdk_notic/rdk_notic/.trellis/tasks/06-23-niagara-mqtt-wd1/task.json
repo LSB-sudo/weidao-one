@@ -1,0 +1,8 @@
+{
+  "id": "06-23-niagara-mqtt-wd1",
+  "title": "Niagara MQTT WD1 protocol integration",
+  "status": "done",
+  "date": "2026-06-23",
+  "summary": "Added a fixed-topic Niagara MQTT mode with multi-topic sensor publish, command subscribe, and in-memory command caching.",
+  "workspace": "/root/rdk_notic"
+}
