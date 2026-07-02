@@ -1,181 +1,181 @@
 # nodehub
 
-这是一个多项目仓库。对于初次使用者，建议优先关注“怎么跑起来”，先启动 RDK 侧 Go 服务并确认网页可访问，再按需处理 Android、STM32 和视觉检测模块。
+This is a multi-project repository. For first-time users, it is recommended to prioritize "getting it up and running": start the RDK-side Go service and confirm the web page is accessible first, then work with the Android, STM32, and vision detection modules as needed.
 
-## 仓库组成
+## Repository Structure
 
-- `RDK/rdk_notic/rdk_notic/`：RDK X5 侧 Go 服务，提供视频预览页面和诊断接口。
-- `Niagara_1/`：Android 控制端应用。
-- `C15A主板测试代码/`：STM32 主板相关工程，以及一个 BLE Android 调试工程。
-- `RDK/rdkx5_img_code/`：Python/ROS2 视觉检测模块。
+- `RDK/rdk_notic/rdk_notic/`: RDK X5-side Go service, providing video preview pages and diagnostic interfaces.
+- `Niagara_1/`: Android control application.
+- `C15A主板测试代码/`: STM32 mainboard related projects, including a BLE Android debugging project.
+- `RDK/rdkx5_img_code/`: Python/ROS2 vision detection module.
 
-## 快速开始
+## Quick Start
 
-如果你的目标是先看到网页视频页面，建议按这个顺序：
+If your goal is to see the video web page first, follow this order:
 
-1. 在板子上进入 `RDK/rdk_notic/rdk_notic/`
-2. 启动 Go 服务
-3. 浏览器访问 `http://<板子IP>:8080/viewer`
-4. 如需手机控制，再处理 `Niagara_1/`
-5. 如需主板联动或视觉检测，再处理 STM32 和 `RDK/rdkx5_img_code/`
+1. On the board, navigate to `RDK/rdk_notic/rdk_notic/`
+2. Start the Go service
+3. Access `http://<board-IP>:8080/viewer` in a browser
+4. If mobile control is needed, proceed to `Niagara_1/`
+5. If mainboard integration or vision detection is needed, work with STM32 and `RDK/rdkx5_img_code/`
 
-## RDK Go 服务运行
+## RDK Go Service Operation
 
-目录：
+Directory:
 
 ```text
 RDK/rdk_notic/rdk_notic/
 ```
 
-推荐启动方式：
+Recommended startup command:
 
 ```bash
 cd RDK/rdk_notic/rdk_notic
 GPS_ENABLED=false ./scripts/run_webrtc_usb.sh
 ```
 
-访问地址：
+Access address:
 
 ```text
-http://<板子IP>:8080/viewer
+http://<board-IP>:8080/viewer
 ```
 
-诊断接口：
+Diagnostic endpoints:
 
 ```text
-http://<板子IP>:8080/health
-http://<板子IP>:8080/devices
+http://<board-IP>:8080/health
+http://<board-IP>:8080/devices
 ```
 
-说明：
+Notes:
 
-- 如果当前没有接 GPS，先用 `GPS_ENABLED=false` 启动。
-- `VIDEO_VFLIP`、`VIDEO_HFLIP` 当前只作为环境变量读取，不应当写成命令行参数。
+- If no GPS is currently connected, start with `GPS_ENABLED=false`.
+- `VIDEO_VFLIP` and `VIDEO_HFLIP` are currently only read as environment variables, not intended to be written as command-line arguments.
 
-常见场景：
+Common scenarios:
 
-1. 只看视频，不接 GPS：
+1. View video only, no GPS connected:
 
 ```bash
 cd RDK/rdk_notic/rdk_notic
 GPS_ENABLED=false ./scripts/run_webrtc_usb.sh
 ```
 
-2. 画面方向不对：
+2. Incorrect video orientation:
 
-- 检查环境变量 `VIDEO_VFLIP`
-- 检查环境变量 `VIDEO_HFLIP`
+- Check environment variables `VIDEO_VFLIP`
+- Check environment variables `VIDEO_HFLIP`
 
-## Niagara_1 Android 应用
+## Niagara_1 Android Application
 
-目录：
+Directory:
 
 ```text
 Niagara_1/
 ```
 
-启动入口：
+Launch entry:
 
-- `ControlActivity`（launcher Activity）
+- `ControlActivity` (launcher Activity)
 
-构建命令：
+Build commands:
 
-Windows：
+Windows:
 
 ```powershell
 cd Niagara_1
 .\gradlew.bat assembleDebug
 ```
 
-Linux / macOS：
+Linux / macOS:
 
 ```bash
 cd Niagara_1
 ./gradlew assembleDebug
 ```
 
-APK 输出路径：
+APK output path:
 
 ```text
 Niagara_1/app/build/outputs/apk/debug/app-debug.apk
 ```
 
-使用前需要修改的地址：
+Addresses to modify before use:
 
 - `viewer_url`
 - `niagara_url`
 
-如果不改成你自己的设备地址，App 页面通常无法正常打开。
+If not changed to your device's address, the App pages will usually not open properly.
 
-HTTP 明文访问注意事项：
+HTTP plaintext access note:
 
-- 当前页面访问使用的是 HTTP 明文地址。
-- Android 侧需要注意 `usesCleartextTraffic` 相关配置是否允许明文流量。
-- 如果后续改成 HTTPS 或改为域名访问，需要同步检查网络安全策略，而不只是修改 URL 字符串。
+- Current page access uses HTTP plaintext addresses.
+- On the Android side, check if `usesCleartextTraffic` allows plaintext traffic.
+- If later switching to HTTPS or domain access, check network security policies accordingly, not just URL strings.
 
-当前应用用途主要包括：
+Current application functions include:
 
-- 扫描 BLE 设备
-- 连接 `FFE0/FFE1` 透传类 BLE 模块
-- 发送控制协议 `RPM,L:x,R:y\n`
-- 打开 RDK viewer 页面
-- 打开 Niagara 页面
+- Scanning BLE devices
+- Connecting to `FFE0/FFE1` transparent transmission BLE modules
+- Sending control protocol `RPM,L:x,R:y\n`
+- Opening the RDK viewer page
+- Opening the Niagara page
 
-## STM32 主板工程
+## STM32 Mainboard Project
 
-Keil 工程路径：
+Keil project path:
 
 ```text
 C15A主板测试代码/USER/MiniBalance.uvprojx
 ```
 
-建议使用 `Keil uVision` 打开、编译，并按你的硬件连接方式完成下载或烧录。
+Recommended to open and compile with `Keil uVision`, and complete download or flashing according to your hardware connections.
 
-这里不写“已验证”的命令行烧录方式，因为当前任务只整理 README，不声称已在本机验证烧录流程。
+No "verified" command-line flashing methods are listed here, as this README only organizes documentation and does not claim verified flashing workflows on local machines.
 
-## BLE Android 调试工程
+## BLE Android Debugging Project
 
-目录：
+Directory:
 
 ```text
 C15A主板测试代码/ble_android/ble_android/
 ```
 
-这是一个标准 Gradle Android 工程。
+This is a standard Gradle Android project.
 
-可选使用方式：
+Optional usage:
 
-- 直接用 Android Studio 打开该目录
-- 根据目录中的 wrapper 或本机 Gradle 环境尝试构建
+- Open the directory directly in Android Studio
+- Attempt to build using the wrapper or local Gradle environment
 
-能否直接构建成功还取决于本机 Android SDK、JDK 和本地环境配置。
+Successful build depends on local Android SDK, JDK, and environment configuration.
 
-## RDK X5 视觉检测模块
+## RDK X5 Vision Detection Module
 
-目录：
+Directory:
 
 ```text
 RDK/rdkx5_img_code/
 ```
 
-这是一个 Python/ROS2 视觉检测模块，与 Go 服务不是同一条启动链路。
+This is a Python/ROS2 vision detection module, not part of the same startup chain as the Go service.
 
-如果你只是想先打开 viewer 页面，不需要先启动这里的内容。
+If you only want to open the viewer page first, you do not need to start this module first.
 
-前提说明：
+Prerequisites:
 
-- 下述运行命令仅适用于已经安装 ROS2 与 RDK X5 相关依赖的目标机环境。
-- 如果当前机器不是目标环境，需要你自行补齐依赖、设备和模型文件。
+- The following commands only apply to target environments with ROS2 and RDK X5 dependencies installed.
+- If your current machine is not the target environment, you need to install dependencies, devices, and model files yourself.
 
-参数文件说明：
+Parameter file note:
 
 ```text
 RDK/rdkx5_img_code/camera_params.yaml
 ```
 
-`camera_params.yaml` 可以作为参考或通过 ROS2 参数机制挂载使用，但它不是直接执行 Python 脚本时自动加载的配置文件。
+`camera_params.yaml` can be used as a reference or mounted via ROS2 parameter mechanisms, but it is not automatically loaded when running Python scripts directly.
 
-可参考的运行入口：
+Reference entry points:
 
 ```bash
 python3 test.py
@@ -184,73 +184,73 @@ python3 visual.py
 python3 bird_deterrent_serial.py
 ```
 
-这些命令只适用于已安装 ROS2 与 RDK X5 依赖的目标机环境。
+These commands only apply to target environments with ROS2 and RDK X5 dependencies installed.
 
-## 常见问题排查
+## Troubleshooting
 
-### viewer 打不开
+### Viewer page not opening
 
-先检查：
+Check first:
 
-- `http://<板子IP>:8080/health` 是否正常
-- 服务是否真的监听在 `8080`
+- Is `http://<board-IP>:8080/health` responding normally?
+- Is the service actually listening on port `8080`?
 
-### devices 为空
+### Devices list empty
 
-通常表示摄像头没有被系统识别，优先检查：
+Usually means the camera is not recognized by the system. Prioritize checking:
 
-- 摄像头是否接好
-- 设备节点是否存在
-- `VIDEO_DEVICE` 是否配置正确
+- Camera connections
+- Existence of device nodes
+- Correct configuration of `VIDEO_DEVICE`
 
-### 无 GPS 设备
+### No GPS device
 
-启动时先关闭 GPS：
+Start with GPS disabled:
 
 ```bash
 GPS_ENABLED=false ./scripts/run_webrtc_usb.sh
 ```
 
-### 画面方向异常
+### Incorrect video orientation
 
-检查：
+Check:
 
 - `VIDEO_VFLIP`
 - `VIDEO_HFLIP`
 
-### Android 页面打不开
+### Android page not opening
 
-优先检查：
+Prioritize checking:
 
 - `viewer_url`
 - `niagara_url`
 
-### BLE 已连接但电机无动作
+### BLE connected but no motor movement
 
-优先检查：
+Prioritize checking:
 
-- Android 权限是否完整
-- BLE 服务和特征 UUID 是否仍为 `FFE0/FFE1`
-- 下发协议是否符合 `RPM,L:x,R:y\n`
-- STM32 固件是否正常运行
+- Complete Android permissions
+- BLE service and characteristic UUIDs still set to `FFE0/FFE1`
+- Control protocol matches `RPM,L:x,R:y\n`
+- STM32 firmware is running normally
 
-## 最小可用启动组合
+## Minimum Working Startup Flow
 
-如果你只想尽快看到系统有响应，可以先做这几步：
+If you just want to see the system respond quickly, follow these steps:
 
-1. 在 RDK 板上进入 `RDK/rdk_notic/rdk_notic`
-2. 运行 `GPS_ENABLED=false ./scripts/run_webrtc_usb.sh`
-3. 浏览器打开 `http://<板子IP>:8080/viewer`
-4. 需要手机侧控制时，再进入 `Niagara_1/` 构建 APK
-5. 安装前先把 `viewer_url`、`niagara_url` 改成实际地址
+1. On the RDK board, navigate to `RDK/rdk_notic/rdk_notic`
+2. Run `GPS_ENABLED=false ./scripts/run_webrtc_usb.sh`
+3. Open `http://<board-IP>:8080/viewer` in a browser
+4. When mobile control is needed, proceed to build the APK in `Niagara_1/`
+5. Before installation, change `viewer_url` and `niagara_url` to the actual device addresses
 
-## 目录速查
+## Directory Overview
 
 ```text
 nodehub/
 |-- RDK/
-|   |-- rdk_notic/rdk_notic/    # RDK X5 Go 服务
-|   `-- rdkx5_img_code/         # RDK X5 Python / ROS2 视觉检测模块
-|-- Niagara_1/                  # Android 控制 App
-`-- C15A主板测试代码/           # STM32 工程与 BLE Android 调试工程
+|   |-- rdk_notic/rdk_notic/    # RDK X5 Go service
+|   `-- rdkx5_img_code/         # RDK X5 Python / ROS2 vision detection module
+|-- Niagara_1/                  # Android control App
+`-- C15A主板测试代码/           # STM32 project & BLE Android debugging project
 ```
